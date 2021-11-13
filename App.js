@@ -7,7 +7,6 @@ import Registration from './pages/Registration'
 export default function App() {
   return (
     <View style={{ backgroundColor: 'pink' }}>
-      <Text>oláaaaaaaaaaaaaaa</Text>
       <Registration />
       <List />
     </View>

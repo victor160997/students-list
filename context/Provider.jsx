@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import Context from "./Context";
 
 const Provider = ({ children }) => {
-  const [data, setData] = useState({
-    data: 'naaada',
-    loaded: false,
-  });
+  const [data, setData] = useState([]);
 
   return (
-    <Context.Provider value={ data }>
+    <Context.Provider value={ { data, setData } }>
       {children}
     </Context.Provider>
   );
