@@ -1,21 +1,22 @@
 import React, { useContext } from 'react'
 import { Text, View } from 'react-native'
 import Context from '../context/Context'
+import { BodyHead, StyledHead, StyleText } from './ListStyle';
 
 export default function List() {
   const context = useContext(Context);
   const { data } = context;
   return (
-    <View style={{ backgroundColor: 'blue' }}>
+    <BodyHead>
       { data.length > 0 && data.map((d) => {
         return (
-          <View key={ d.cpf } >
-            <Text>{ d.nome }</Text>
-            <Text>{ d.cpf }</Text>
-            <Text>{ d.materia }</Text>
-          </View>
+          <StyledHead key={ d.cpf } >
+            <StyleText>Nome: { d.nome }</StyleText>
+            <StyleText>CPF: { d.cpf }</StyleText>
+            <StyleText>Matéria: { d.materia }</StyleText>
+          </StyledHead>
         );
       })}
-    </View>
+    </BodyHead>
   )
 }

@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react'
-import { Text, TextInput, View, Picker, Button } from 'react-native'
+import { Picker, StyleSheet } from 'react-native'
 import Context from '../context/Context';
+import { BodyRegistration, styleComponent, StyledButton, StyledPicker, StyledTextInput } from './RegistrationStyle';
+import { Button } from 'react-native-elements';
 
 export default function Registration() {
 
@@ -14,39 +16,44 @@ export default function Registration() {
   });
 
   return (
-    <View style={{ backgroundColor: 'red' }}>
-      <TextInput
+    <BodyRegistration>
+      <StyledTextInput
         type="text"
         value={ studentInfos.nome }
         onChangeText={ text => setInfos({
           ...studentInfos,
           nome: text,
         }) }
-        style={{ backgroundColor: 'pink' }}
+        placeholder="Nome do aluno"
       />
-      <TextInput
+      <StyledTextInput
         keyboardType="numeric"
         value={ studentInfos.cpf }
         onChangeText={ text => setInfos({
           ...studentInfos,
           cpf: text,
         }) }
-        style={{ backgroundColor: 'green' }}
+        placeholder="CPF"
       />
-      <Picker
-        selectedValue={ studentInfos.materia }
-        style={{ height: 50, width: 150 }}
-        onValueChange={ (item) => setInfos({
-          ...studentInfos,
-          materia: item,
-        }) }
-      >
-        <Picker.Item label="Java" value="Java" />
-        <Picker.Item label="JavaScript" value="JavaScript" />
-      </Picker>
+      <StyledPicker>
+        <Picker
+          selectedValue={ studentInfos.materia }
+          style={{ height: 31, width: '100%', color: 'white' }}
+          onValueChange={ (item) => setInfos({
+            ...studentInfos,
+            materia: item,
+          }) }
+        >
+          <Picker.Item label="Java" value="Java" />
+          <Picker.Item label="JavaScript" value="JavaScript" />
+          <Picker.Item label="Node" value="Node" />
+          <Picker.Item label="Python" value="Python" />
+          <Picker.Item label="MySQL" value="MySQL" />
+        </Picker>
+      </StyledPicker>
       <Button
+        buttonStyle={ styleComponent.button }
         title="Registrar"
-        color="#841584"
         accessibilityLabel="Learn more about this purple button"
         onPress={ () => {
           setData([...data, {
@@ -61,6 +68,6 @@ export default function Registration() {
           });
         }}
       />
-    </View>
+    </BodyRegistration>
   )
 }
